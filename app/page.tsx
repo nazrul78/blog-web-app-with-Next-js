@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Blog } from "./model/blog";
 
 const getAllBlogs = async () => {
@@ -29,7 +30,7 @@ export default async () => {
     const blogs: Blog[] = rawData['data'];
 
     // console.log(blogs['data']);
-    console.log(blogs[0]._id);
+    // console.log(blogs[0]._id);
 
 
 
@@ -51,6 +52,16 @@ export default async () => {
         // </section>
 
 
+
+
+
+        // <div>
+        //     <ul>
+        //         {blogs.map(blog => <li > <Link href={`/${blog._id}`}> {blog.title}</Link></li>)}
+        //     </ul>
+        // </div>
+
+
         <section>
 
             {blogs.map(blog => <figure className="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
@@ -58,8 +69,14 @@ export default async () => {
                 <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
 
                     <blockquote>
+                        {/* <ul>
+                            <li></li>
+                        </ul> */}
                         <h1 className="text-lg font-medium">
-                            {blog.title}
+
+                            <Link href={`/blog/${blog._id}`}> {blog.title}</Link>
+                            {/* <Link href={`/${1442412}`}> {blog.title}</Link> */}
+
                         </h1>
                     </blockquote>
                     <blockquote>
